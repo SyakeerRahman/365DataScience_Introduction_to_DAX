@@ -13,10 +13,41 @@ IF(factInternetSales[ShipDate] > factInternetSales[DueDate], "Late Shipment", "O
 ``
 
 • Calendar Table
+
+``
+Calendar Table = 
+ADDCOLUMNS(
+    CALENDARAUTO(), 
+        "Year", YEAR([Date]),
+        "Month", MONTH([Date]),
+        "Month Name", FORMAT([Date], "MMMM"),
+        "Month Year", FORMAT([Date], "MM/YYYY"))
+``
+
 • Building a Measure
+
+``
+Number of Sales = 
+COUNT(factInternetSales[SalesOrderNumber])
+``
 • Measures Table
+
+<img width="911" alt="image" src="https://github.com/SyakeerRahman/365DataScience_Introduction_to_DAX/assets/105381652/31647b4e-61bb-465c-8174-66693a452eca">
+
 • CALCULATE
+
+
+``
+Total Sales Amount = SUM(factInternetSales[Sales Amount EUR])
+``
+
+``
+Total Sales Amount CALCULATE = CALCULATE([Total Sales Amount], dimProduct[Color] = "Blue")
+``
+
 • FILTER vs KEEPFILTERS
+
+
 • Iterators
 • RELATED vs RELATEDTABLE
 • SELECTEDVALUE
